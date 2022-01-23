@@ -1,0 +1,144 @@
+apiVersion: kfdef.apps.kubeflow.org/v1
+kind: KfDef
+metadata:
+  name: kubeflow
+  namespace: kubeflow
+spec:
+  applications:
+  # 1 
+  - kustomizeConfig:
+      repoRef:
+        name: manifests
+        path: distributions/stacks/ibm/application/cert-manager-crds
+    name: cert-manager-crds
+  # 2 TODO 
+  - kustomizeConfig:
+      repoRef:
+        name: manifests
+        path: distributions/stacks/ibm/application/cert-manager-kube-system-resources
+    name: cert-manager-kube-system-resources
+  # 3 TODO
+  - kustomizeConfig:
+      repoRef:
+        name: manifests
+        path: distributions/stacks/ibm/application/cert-manager
+    name: cert-manager
+  # 4
+  - kustomizeConfig:
+      repoRef:
+        name: manifests
+        path: distributions/stacks/openshift/application/istio-1-9-0-Openshift
+    name: istio-stack
+  # 5 TODO
+  - kustomizeConfig:
+      repoRef:
+        name: manifests
+        path: distributions/stacks/ibm/application/knative
+    name: knative
+  # 6
+  - kustomizeConfig:
+      repoRef:
+        name: manifests
+        path: distributions/stacks/ibm/application/kfserving
+    name: kfserving
+  # 7
+  - kustomizeConfig:
+      repoRef:
+        name: manifests
+        path: distributions/stacks/ibm/application/kubeflow-namespace
+    name: kubeflow-namespace
+  # 8
+  - kustomizeConfig:
+      repoRef:
+        name: manifests
+        path: distributions/stacks/ibm/application/kubeflow-roles
+    name: kubeflow-roles
+  # 9
+  - kustomizeConfig:
+      repoRef:
+        name: manifests
+        path: distributions/stacks/ibm/application/kubeflow-istio-resources
+    name: istio-resources
+  # 10
+  - kustomizeConfig:
+      repoRef:
+        name: manifests
+        path: distributions/stacks/ibm/application/profiles
+    name: kubeflow-apps
+  # 11
+  - kustomizeConfig:
+      repoRef:
+        name: manifests
+        path: distributions/stacks/ibm/application/oidc-authservice
+    name: oidc-authservice
+  # 12
+  - kustomizeConfig:
+      repoRef:
+        name: manifests
+        path: distributions/stacks/ibm/application/dex-auth
+    name: dex-auth
+  # 13
+  - kustomizeConfig:
+      repoRef:
+        name: manifests
+        path: distributions/stacks/ibm/application/user-namespace
+    name: user-namespace
+  # 14
+  - kustomizeConfig:
+      repoRef:
+        name: manifests
+        path: distributions/stacks/ibm/application/admission-webhook
+    name: admission-webhook
+  # 15
+  - kustomizeConfig:
+      repoRef:
+        name: manifests
+        path: distributions/stacks/ibm/application/centraldashboard/single-user
+    name: centraldashboard
+  # 16
+  - kustomizeConfig:
+      repoRef:
+        name: manifests
+        path: distributions/stacks/ibm/application/katib
+    name: katib
+  # 17
+  - kustomizeConfig:
+      repoRef:
+        name: manifests
+        path: distributions/stacks/ibm/application/kfp-tekton
+    name: kfp-tekton
+  # 18
+  - kustomizeConfig:
+      repoRef:
+        name: manifests
+        path: distributions/stacks/ibm/application/notebook-controller
+    name: notebooks-controller
+  # 19
+  - kustomizeConfig:
+      repoRef:
+        name: manifests
+        path: distributions/stacks/ibm/application/jupyter-web-app/insecure
+    name: jupyter-web-app
+  # 20
+  - kustomizeConfig:
+      repoRef:
+        name: manifests
+        path: distributions/stacks/ibm/application/tensorboard-controller
+    name: tensorboard-controller
+  # 21
+  - kustomizeConfig:
+      repoRef:
+        name: manifests
+        path: distributions/stacks/ibm/application/tensorboard-web-app/insecure
+    name: tensorboard-web-app
+  # 22
+  - kustomizeConfig:
+      repoRef:
+        name: manifests
+        path: distributions/stacks/ibm/application/volumes-web-app/insecure
+    name: volumes-web-app
+  # TODO change to 1.4
+  repos:
+  - name: manifests
+    uri: https://github.com/kubeflow/manifests/archive/v1.3.0.tar.gz
+  version: v1.3.0-tag
